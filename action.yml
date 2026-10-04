@@ -1,0 +1,32 @@
+name: "SlopScore: AI-slop check"
+description: "Fail a pull request when docs or marketing copy read like AI slop. Annotates each tell with a fix."
+branding: { icon: "edit-3", color: "orange" }
+inputs:
+  paths:
+    description: "Files or directories to check (space separated)"
+    default: "."
+  max:
+    description: "Fail if any file scores above this (0-100)"
+    default: "40"
+  ignore:
+    description: "Pattern ids to ignore, comma separated (e.g. dash,triad)"
+    default: ""
+  ext:
+    description: "File extensions to scan in directories"
+    default: ".md,.mdx,.txt,.html,.rst"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with: { node-version: "20" }
+    - shell: bash
+      env:
+        SS_PATHS: ${{ inputs.paths }}
+        SS_MAX: ${{ inputs.max }}
+        SS_IGNORE: ${{ inputs.ignore }}
+        SS_EXT: ${{ inputs.ext }}
+      run: |
+        ARGS=(--max "$SS_MAX" --format github --ext "$SS_EXT")
+        if [ -n "$SS_IGNORE" ]; then ARGS+=(--ignore "$SS_IGNORE"); fi
+        # shellcheck disable=SC2086
+        node "${{ github.action_path }}/bin/slopscore.js" "${ARGS[@]}" $SS_PATHS

@@ -1,0 +1,14 @@
+# Copy to .github/workflows/slopscore.yml in your repo.
+name: SlopScore
+on:
+  pull_request:
+    paths: ["**/*.md", "**/*.mdx", "content/**", "docs/**"]
+jobs:
+  slop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kburrus64-max/slopscore@v1
+        with:
+          paths: "docs content README.md"
+          max: "40"
