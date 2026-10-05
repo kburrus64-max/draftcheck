@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.kburrus64-max/slopscore",
+  "title": "SlopScore AI-writing linter",
+  "description": "Flags AI-writing patterns (AI slop) in prose with fix hints. Deterministic linter, not a detector.",
+  "repository": {
+    "url": "https://github.com/kburrus64-max/slopscore",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "websiteUrl": "https://slopscore-nine.vercel.app",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://slopscore-nine.vercel.app/mcp"
+    }
+  ]
+}
