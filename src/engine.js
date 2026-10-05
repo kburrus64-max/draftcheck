@@ -14,6 +14,9 @@ const RULES = [
     /\bnot\s+(?:just|only|merely|simply)\s+(?:about\s+)?[^.;!?\n]{1,60}?,?\s+but\s+(?:also\s+)?/gi,
     /\b(?:isn'?t|is not|wasn'?t|was not|doesn'?t|does not|aren'?t|are not)\s+(?:about\s+|just\s+)?[^.!?\n]{1,50}[.!?]\s+(?:It|This|That|They)(?:'s|'re| is| are| was| means)\b/g,
     /\bless\s+(?:about|a)\s+[^.!?\n]{1,40}\s+and\s+more\s+(?:about|a)\b/gi,
+    // 2026-model corrective framing (Graphite study, Oct 2026): "is more than an X, it's a Y", "is not simply X; it is Y"
+    /\b(?:is|are|was|were)\s+(?:so\s+)?(?:much\s+)?more\s+than\s+(?:just\s+)?[^.;!?\n]{1,50}?[,;:—–]\s*(?:it'?s|it is|they'?re|they are|this is|it'?s also)\b/gi,
+    /\b(?:is|are|was|were)\s+not\s+(?:simply|merely|just|only)\s+[^.;!?\n]{1,60}?[,;:—–]\s*(?:it'?s|it is|they'?re|they are|this is|but)\b/gi,
   ]],
   ["one_line_closer", "Staging", "strong", "Dramatic closer", "Cut closers that restate the paragraph. End on a fact.", [
     /\b(?:let that sink in|read that again|that'?s the (?:real )?(?:win|point|magic|secret|difference|whole thing)|that distinction matters|and that changes everything|this changes everything|and that'?s the point|that'?s it\. that'?s the)\b/gi,
@@ -61,6 +64,17 @@ const RULES = [
   ]],
   ["ai_vocab", "Inflation", "medium", "Overused AI word", "Use a plainer word, or cut it.", [
     /\b(?:delve[sd]?|delving|tapestry|testament|pivotal|intricate|intricacies|meticulous(?:ly)?|showcas(?:e|es|ed|ing)|underscor(?:e|es|ed|ing)|bolster(?:s|ed|ing)?|garner(?:s|ed|ing)?|interplay|vibrant|enduring|crucial|seamless(?:ly)?|game[- ]changer|revolutioniz(?:e|es|ed|ing)|unlock(?:s|ing)? the (?:power|potential|full)|harness(?:es|ing)? the power|elevate your|empower(?:s|ing)?|leverag(?:e|es|ed|ing)|realm|embark(?:s|ed|ing)?|navigat(?:e|ing) the (?:complexities|landscape|world)|ever-evolving|cutting-edge|unparalleled|transformative|synergy|holistic|paradigm shift|deep dive|landscape of|robust and scalable|supercharge|fast-paced world|moreover|furthermore|streamlin(?:e|es|ed|ing)|enhanc(?:e|es|ed|ing) (?:productivity|efficiency|the|your|user)|well-positioned|it is (?:clear|evident|worth noting) that|transform(?:s|ing)? the way|new opportunities|embrac(?:e|es|ing) (?:the|change|ai|innovation)|thrive in)\b/gi,
+  ]],
+  // Newer-model stock phrases (Graphite AI-tells study, TechCrunch Oct 1 2026). Kept medium/weak: each is ordinary English alone.
+  ["newer_model_phrase", "Rhythm", "medium", "Newer-model stock phrase", "Cut the signpost and state the specific point.", [
+    /\b(?:this|that) (?:really |truly )?matters\b(?!\s+(?:because|since|if|when|to (?:me|us|you|them)))/gi,
+    /\b(?:here'?s|here is|that'?s|this is|which is) why\s+[^.!?\n]{1,40}?\s+matters?\b/gi,
+    /(?:^|\n)#*\s*Why\s+[^.!?\n]{1,40}?\s+matters?\b/g,
+    /(?:^|[.!?]\s+)(?:Looking ahead|Moving forward|Going forward),/gm,
+    /\brather than (?:relying on|simply|merely|just)\b/gi,
+  ]],
+  ["newer_model_vocab", "Inflation", "weak", "Newer-model word choice", "Use a plainer, more specific claim.", [
+    /\b(?:dependable|does not establish|(?:may|can) provide (?:real|significant|meaningful|valuable|tangible)|a (?:clear|strong) signal that)\b/gi,
   ]],
   ["bold_labels", "Formatting", "medium", "Bold label lists", "Turn labeled bullets into prose when labels add nothing.", [/^\s*(?:[-*•]|\d+\.)\s+\*\*[^*\n]{1,40}:?\*\*:?/gm]],
   ["emoji_bullets", "Formatting", "medium", "Emoji/arrow decoration", "Remove decorative emojis and arrows.", [/^[\s#>*-]*(?:[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]\uFE0F?|→|👉)/gmu]],

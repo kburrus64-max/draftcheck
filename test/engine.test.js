@@ -11,3 +11,14 @@ test("ignoreQuoted skips quoted examples", async () => {
   assert.ok(analyze(t).matches.some((m) => m.id === "chatbot_residue"));
   assert.ok(!analyze(t, { ignoreQuoted: true }).matches.some((m) => m.id === "chatbot_residue"));
 });
+
+test("flags 2026-model tells (Graphite study, Oct 2026)", () => {
+  const t = "This matters for every team. Here is why reliability matters in practice. The platform is more than a tool, it's a partner for growth. The update is not simply a patch; it is a rethink of the pipeline. Rather than relying on manual checks, teams can automate review. Looking ahead, the roadmap adds two features.";
+  const r = analyze(t);
+  assert.ok(r.matches.some((m) => m.id === "newer_model_phrase"));
+  assert.ok(r.matches.some((m) => m.id === "not_x_but_y"));
+  assert.ok(r.score >= 70, String(r.score));
+});
+test("plain uses of matters / looking ahead stay clean", () => {
+  for (const s of ["This matters because the contract renews Friday.", "It matters to me that the build is green.", "Looking ahead to Friday, I booked the room."]) assert.equal(analyze(s).score, 0, s);
+});
