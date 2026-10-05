@@ -60,6 +60,16 @@ jobs:
 
 Each match shows up as an annotation on the changed line. The check fails when a file goes over `max`.
 
+## Agent skill
+
+SlopScore ships as an [Agent Skill](skills/slopscore/SKILL.md) for Claude Code, Cursor, Codex and other agents that read `SKILL.md` files. The skill tells the agent to score its draft, rewrite only the flagged spans, and re-check:
+
+```sh
+npx skills add kburrus64-max/slopscore
+```
+
+Prompt-only writing skills such as humanizer and no-ai-slop tell an agent what to avoid; SlopScore gives it a deterministic check to run afterwards.
+
 ## Library
 
 ```js
