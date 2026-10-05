@@ -68,6 +68,15 @@ SlopScore ships as an [Agent Skill](skills/slopscore/SKILL.md) for Claude Code, 
 npx skills add kburrus64-max/slopscore
 ```
 
+As a Claude Code plugin (skill plus the hosted MCP server), from inside Claude Code:
+
+```
+/plugin marketplace add kburrus64-max/slopscore
+/plugin install slopscore@slopscore
+```
+
+Cursor can load the same repo as a plugin through `.cursor-plugin/plugin.json`.
+
 Prompt-only writing skills such as humanizer and no-ai-slop tell an agent what to avoid; SlopScore gives it a deterministic check to run afterwards.
 
 ## Library

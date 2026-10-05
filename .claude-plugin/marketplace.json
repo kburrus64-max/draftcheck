@@ -1,0 +1,16 @@
+{
+  "name": "slopscore",
+  "description": "SlopScore: a deterministic linter for AI-writing patterns in prose, as an agent skill plus MCP server.",
+  "owner": { "name": "Anansi Data", "url": "https://github.com/kburrus64-max" },
+  "plugins": [
+    {
+      "name": "slopscore",
+      "description": "Find AI-writing patterns (\"AI slop\") in prose: not-X-but-Y contrasts, dramatic closers, chatbot leftovers, stock vocabulary, em-dash overuse. Deterministic linter, not an AI detector. Adds the slopscore agent skill and the SlopScore MCP server (slop_check and slop_patterns are free; slop_check_long needs Pro).",
+      "version": "0.1.0",
+      "source": "./",
+      "homepage": "https://slopscore-nine.vercel.app",
+      "license": "MIT",
+      "keywords": ["ai-slop", "writing", "linter"]
+    }
+  ]
+}
