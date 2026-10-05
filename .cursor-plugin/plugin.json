@@ -1,14 +1,27 @@
 {
-  "name": "slopscore",
+  "name": "draftcheck",
   "version": "0.1.0",
-  "description": "Find AI-writing patterns (\"AI slop\") in prose: not-X-but-Y contrasts, dramatic closers, chatbot leftovers, stock vocabulary, em-dash overuse. Deterministic linter, not an AI detector. Adds the slopscore agent skill and the SlopScore MCP server (slop_check and slop_patterns are free; slop_check_long needs Pro).",
-  "author": { "name": "Anansi Data" },
+  "description": "Find AI-writing patterns (\"AI slop\") in prose: not-X-but-Y contrasts, dramatic closers, chatbot leftovers, stock vocabulary, em-dash overuse. Deterministic linter, not an AI detector. Adds the draftcheck agent skill and the DraftCheck MCP server (slop_check and slop_patterns are free; slop_check_long needs Pro).",
+  "author": {
+    "name": "Anansi Data"
+  },
   "homepage": "https://slopscore-nine.vercel.app",
-  "repository": "https://github.com/kburrus64-max/slopscore",
+  "repository": "https://github.com/kburrus64-max/draftcheck",
   "license": "MIT",
-  "keywords": ["ai-slop", "ai-writing", "writing", "linter", "prose-linter"],
+  "keywords": [
+    "ai-slop",
+    "ai-writing",
+    "writing",
+    "linter",
+    "prose-linter"
+  ],
   "skills": "./skills/",
   "mcpServers": {
-    "slopscore": { "url": "https://slopscore-nine.vercel.app/mcp" }
+    "slopscore": {
+      "url": "https://slopscore-nine.vercel.app/mcp"
+    },
+    "draftcheck": {
+      "url": "https://slopscore-nine.vercel.app/mcp"
+    }
   }
 }

@@ -1,4 +1,4 @@
-# Copy to .github/workflows/slopscore.yml in your repo.
+# Copy to .github/workflows/draftcheck.yml in your repo.
 name: DraftCheck
 on:
   pull_request:

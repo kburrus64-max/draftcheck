@@ -1,4 +1,4 @@
-// SlopScore engine: deterministic detector for AI-writing patterns ("AI slop").
+// DraftCheck engine: deterministic detector for AI-writing patterns ("AI slop").
 // Pattern taxonomy adapted from blader/humanizer (MIT) and petergyang/no-ai-slop (MIT), which both
 // draw on Wikipedia's "Signs of AI writing". Regexes and scoring are original. Runs in browser and Node.
 

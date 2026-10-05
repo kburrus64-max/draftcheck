@@ -1,13 +1,14 @@
 {
-  "name": "slopscore",
+  "name": "draftcheck",
   "version": "0.1.0",
-  "description": "Find AI-writing patterns (\"AI slop\") in text: not-X-but-Y contrasts, dramatic closers, chatbot leftovers, 'delve', em-dash overuse. CLI, library and GitHub Action.",
+  "description": "DraftCheck (formerly SlopScore): find AI-writing patterns (\"AI slop\") in text. CLI, library and GitHub Action.",
   "type": "module",
   "main": "src/engine.js",
   "exports": {
     ".": "./src/engine.js"
   },
   "bin": {
+    "draftcheck": "bin/slopscore.js",
     "slopscore": "bin/slopscore.js"
   },
   "files": [
@@ -24,6 +25,8 @@
     "node": ">=18"
   },
   "keywords": [
+    "draftcheck",
+    "slopscore",
     "ai-slop",
     "ai-writing",
     "writing",
@@ -38,10 +41,10 @@
   "homepage": "https://slopscore-nine.vercel.app",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kburrus64-max/slopscore.git"
+    "url": "git+https://github.com/kburrus64-max/draftcheck.git"
   },
   "author": "Anansi Data",
   "bugs": {
-    "url": "https://github.com/kburrus64-max/slopscore/issues"
+    "url": "https://github.com/kburrus64-max/draftcheck/issues"
   }
 }

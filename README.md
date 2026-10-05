@@ -1,10 +1,12 @@
-# SlopScore
+# DraftCheck
 
-[![test](https://github.com/kburrus64-max/slopscore/actions/workflows/test.yml/badge.svg)](https://github.com/kburrus64-max/slopscore/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Live site](https://img.shields.io/badge/try%20it-slopscore--nine.vercel.app-orange)](https://slopscore-nine.vercel.app)
+> Formerly **SlopScore**. Same product, new name after a naming clash.
+
+[![test](https://github.com/kburrus64-max/draftcheck/actions/workflows/test.yml/badge.svg)](https://github.com/kburrus64-max/draftcheck/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Live site](https://img.shields.io/badge/try%20it-slopscore--nine.vercel.app-orange)](https://slopscore-nine.vercel.app)
 
 Find the patterns that make writing read as AI-generated, and fix them before you publish.
 
-SlopScore scans text for 20+ habits of machine-written prose: "it's not X, it's Y" contrasts, dramatic one-line closers, "let's dive in" openers, inflated significance ("a pivotal moment"), AI vocabulary ("delve", "seamless", "leverage"), em-dash overuse, bold-label bullet lists, and chatbot leftovers like "I hope this helps!". It returns a 0-100 score and points at every match with a short fix.
+DraftCheck scans text for 20+ habits of machine-written prose: "it's not X, it's Y" contrasts, dramatic one-line closers, "let's dive in" openers, inflated significance ("a pivotal moment"), AI vocabulary ("delve", "seamless", "leverage"), em-dash overuse, bold-label bullet lists, and chatbot leftovers like "I hope this helps!". It returns a 0-100 score and points at every match with a short fix.
 
 It's a linter, not a detector. It doesn't guess who wrote a text. It shows you the specific sentences readers will notice.
 
@@ -14,10 +16,10 @@ It's a linter, not a detector. It doesn't guess who wrote a text. It shows you t
 ## CLI
 
 ```sh
-npx github:kburrus64-max/slopscore README.md docs/
+npx github:kburrus64-max/draftcheck README.md docs/
 ```
 
-(Not on npm yet. The unscoped `slopscore` name on npm belongs to a different project, so install from GitHub for now: `npm i -D github:kburrus64-max/slopscore`.)
+(Not on npm yet as `draftcheck`. The unscoped `slopscore` name on npm belongs to a different project. Install from GitHub: `npm i -D github:kburrus64-max/draftcheck`. The `slopscore` CLI bin remains as an alias.)
 
 ```
 FAIL  71  Pure slop        docs/launch-post.md
@@ -43,7 +45,7 @@ Code blocks, inline code, front matter, URLs and HTML tags are ignored, so READM
 ## GitHub Action
 
 ```yaml
-name: SlopScore
+name: DraftCheck
 on:
   pull_request:
     paths: ["**/*.md", "docs/**", "content/**"]
@@ -52,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: kburrus64-max/slopscore@v1
+      - uses: kburrus64-max/draftcheck@v1
         with:
           paths: "docs content README.md"
           max: "40"
@@ -62,27 +64,27 @@ Each match shows up as an annotation on the changed line. The check fails when a
 
 ## Agent skill
 
-SlopScore ships as an [Agent Skill](skills/slopscore/SKILL.md) for Claude Code, Cursor, Codex and other agents that read `SKILL.md` files. The skill tells the agent to score its draft, rewrite only the flagged spans, and re-check:
+DraftCheck ships as an [Agent Skill](skills/draftcheck/SKILL.md) for Claude Code, Cursor, Codex and other agents that read `SKILL.md` files. The skill tells the agent to score its draft, rewrite only the flagged spans, and re-check:
 
 ```sh
-npx skills add kburrus64-max/slopscore
+npx skills add kburrus64-max/draftcheck
 ```
 
 As a Claude Code plugin (skill plus the hosted MCP server), from inside Claude Code:
 
 ```
-/plugin marketplace add kburrus64-max/slopscore
-/plugin install slopscore@slopscore
+/plugin marketplace add kburrus64-max/draftcheck
+/plugin install draftcheck@draftcheck
 ```
 
 Cursor can load the same repo as a plugin through `.cursor-plugin/plugin.json`.
 
-Prompt-only writing skills such as humanizer and no-ai-slop tell an agent what to avoid; SlopScore gives it a deterministic check to run afterwards.
+Prompt-only writing skills such as humanizer and no-ai-slop tell an agent what to avoid; DraftCheck gives it a deterministic check to run afterwards.
 
 ## Library
 
 ```js
-import { analyze, PATTERNS } from "slopscore";
+import { analyze, PATTERNS } from "draftcheck";
 
 const r = analyze("Great question! Let's dive in.", { ignoreQuoted: false });
 r.score;    // 0-100
@@ -111,6 +113,10 @@ The web app has a free JSON API (`POST /api/check`, up to 5,000 characters), a U
 ## Credits
 
 The pattern list builds on Wikipedia's [Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) (WikiProject AI Cleanup) and two MIT-licensed agent skills: [blader/humanizer](https://github.com/blader/humanizer) and [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop). The detection code and scoring here are original.
+
+## Notes on the rename
+
+This project was formerly **SlopScore**. The GitHub repo is now `kburrus64-max/draftcheck` (old URL redirects). The MCP Registry namespace stays `io.github.kburrus64-max/slopscore` so the existing listing is not orphaned. Live site and MCP remote remain at https://slopscore-nine.vercel.app.
 
 ## License
 

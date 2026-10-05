@@ -1,16 +1,18 @@
 ---
-name: slopscore
+name: draftcheck
 description: Check prose for AI-writing patterns (not-X-but-Y contrasts, staged run-ups, dramatic closers, "delve", chatbot leftovers, inflated significance) with a deterministic linter, then fix each flagged line. Use after drafting or editing READMEs, docs, blog posts, emails or marketing copy, or when asked whether text "sounds like AI".
 ---
 
-# SlopScore
+# DraftCheck
 
-SlopScore is a linter, not an authorship detector. It flags specific phrases and sentence shapes and gives a fix hint for each. It does not say who wrote the text.
+Formerly SlopScore.
+
+DraftCheck is a linter, not an authorship detector. It flags specific phrases and sentence shapes and gives a fix hint for each. It does not say who wrote the text.
 
 ## Run it
 
-- Files or folders: `npx -y github:kburrus64-max/slopscore <paths> --format json`
-- Text from stdin: `echo "$TEXT" | npx -y github:kburrus64-max/slopscore - --format json`
+- Files or folders: `npx -y github:kburrus64-max/draftcheck <paths> --format json`
+- Text from stdin: `echo "$TEXT" | npx -y github:kburrus64-max/draftcheck - --format json`
 - No local Node: `POST https://slopscore-nine.vercel.app/api/check` with JSON `{"text": "..."}` (free, up to 5,000 characters).
 - MCP (streamable HTTP): `https://slopscore-nine.vercel.app/mcp`, tool `slop_check`.
 

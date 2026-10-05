@@ -1,4 +1,4 @@
-name: "SlopScore: AI-slop check"
+name: "DraftCheck (formerly SlopScore): AI-slop check"
 description: "Fail a pull request when docs or marketing copy read like AI slop. Annotates each tell with a fix."
 branding: { icon: "edit-3", color: "orange" }
 inputs:

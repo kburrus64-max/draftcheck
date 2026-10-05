@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// slopscore CLI: find AI-writing patterns ("AI slop") in files. MIT License.
+// draftcheck CLI (slopscore bin alias): find AI-writing patterns ("AI slop") in files. MIT License.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 import { analyze } from "../src/engine.js";
 
-const HELP = `slopscore: find AI-writing patterns in text files
+const HELP = `draftcheck (formerly SlopScore): find AI-writing patterns in text files
 
-Usage: slopscore [options] <file|dir|-> ...
+Usage: draftcheck|slopscore [options] <file|dir|-> ...
 
 Options:
   --max <n>          fail (exit 1) if any file scores above n (default 40)
