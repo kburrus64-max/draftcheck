@@ -1,0 +1,29 @@
+{
+  "name": "slopscore",
+  "version": "0.1.0",
+  "description": "Find AI-writing patterns (\"AI slop\") in prose. Deterministic linter, not an AI detector.",
+  "author": {
+    "name": "Anansi Data",
+    "url": "https://github.com/kburrus64-max"
+  },
+  "homepage": "https://slopscore-nine.vercel.app",
+  "repository": "https://github.com/kburrus64-max/slopscore",
+  "license": "MIT",
+  "keywords": ["ai-slop", "ai-writing", "writing", "linter", "editing"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SlopScore",
+    "shortDescription": "Score prose for AI-writing patterns",
+    "longDescription": "SlopScore checks writing for about 20 patterns people associate with AI drafts, such as not-X-but-Y contrasts, dramatic one-line closers, chatbot leftovers, stock vocabulary and em-dash overuse. It returns a 0-100 score and points to each flagged phrase with a fix hint.\n\nThe rules are public and the same text always gets the same score. It flags phrasing, not authorship: it can't tell who or what wrote a text.",
+    "developerName": "Anansi Data",
+    "category": "Productivity",
+    "capabilities": ["Detect", "Edit"],
+    "websiteURL": "https://slopscore-nine.vercel.app",
+    "privacyPolicyURL": "https://slopscore-nine.vercel.app/privacy/",
+    "termsOfServiceURL": "https://slopscore-nine.vercel.app/terms/",
+    "defaultPrompt": ["Score this for AI slop: (text)", "Check my README for AI-writing patterns"],
+    "brandColor": "#D9480F",
+    "composerIcon": "./assets/slopscore.png",
+    "logo": "./assets/slopscore.png"
+  }
+}
