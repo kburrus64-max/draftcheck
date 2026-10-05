@@ -6,6 +6,10 @@
   "homepage": "https://slopscore-nine.vercel.app",
   "repository": "https://github.com/kburrus64-max/slopscore",
   "license": "MIT",
+  "documentationUrl": "https://github.com/kburrus64-max/slopscore#readme",
+  "supportUrl": "https://github.com/kburrus64-max/slopscore/issues",
+  "privacyPolicyUrl": "https://slopscore-nine.vercel.app/privacy/",
+  "termsOfServiceUrl": "https://slopscore-nine.vercel.app/terms/",
   "keywords": ["ai-slop", "ai-writing", "writing", "linter", "prose-linter", "editing"],
   "mcpServers": {
     "slopscore": { "type": "http", "url": "https://slopscore-nine.vercel.app/mcp" }
